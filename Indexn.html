@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html >
+  <body >
+    Text limit setter:
+    <input type="text" name="yrs" id="count" oninput="run()" placeholder="enter text" onkeydown=""/>
+    <h5 id="counto">Count:0/100</h5></br></br></br>Password maker/checker:</br>
+      <input type="text" name="yrs" id="countto" oninput="runt()" placeholder="enter password" onkeydown=""/>
+      <input type="checkbox" name="yrs" id="counttn" oninput="runt()" placeholder="Show password" onkeydown=""/>Show password
+    <h5 id="countoo" style="color:red;">*6 alphabets</h5>
+    <h5 id="countth" style="color:red;">*one number</h5>
+    <h5 id="countal" style="color:red;">*one uppercase letter</h5>
+    <h3 id="lastt" style="display:none; color:green;">✓</h3>
+  </body>
+</html>
+<script >
+  var test="yes"
+  function run(){
+    document.getElementById("count").placeholder="enter text";
+    var item = document.getElementById("count").value;
+    var count = 0;
+    var test="yes";
+    var final = "oops";
+    for(char in item){
+      if(test=="yes"){
+        count+=1;}
+    }
+    if(count > 100){
+      document.getElementById("count").placeholder="not allowed";
+      document.getElementById("count").value = "";
+      alert("can input more than 100 words");
+      count=0;
+    }
+    if(count == 100){
+      var newstr = item.slice(0,-1);
+      document.getElementById("count").value = newstr;
+    }
+    if(count < 100){
+      document.getElementById("count").type = "text";
+    }
+    document.getElementById("counto").innerHTML="Count:"+count+"/100"
+  }
+  
+  function runt(){
+    var into = 0;
+    itemt = document.getElementById("countto").value;
+    var calph = ((itemt.match(/[a-z]/g) || [] ).length);
+    var cnum = ((itemt.match(/[0-9]/g) || [] ).length);
+    var cuppalph = ((itemt.match(/[A-Z]/g) || [] ).length);
+    for(x in itemt){
+      if(test == "yes"){
+      into += 1;
+      }
+    }
+    if(into == 12){
+      var newstrt = itemt.slice(0,-1);
+      document.getElementById("countto").value = newstrt;
+      
+    }
+    if(calph >= 6){
+      document.getElementById("countoo").style.color="lime";
+    }
+    else{
+      document.getElementById("countoo").style.color="red"
+    }
+     if(cnum >= 1){
+      document.getElementById("countth").style.color="lime";
+    }
+    else{
+      document.getElementById("countth").style.color="red"
+    }
+     if(cuppalph >= 1){
+      document.getElementById("countal").style.color="lime";
+    }
+    else{
+      document.getElementById("countal").style.color="red"
+    }
+    if(document.getElementById("counttn"). checked==true){
+      document.getElementById("countto").type="text";
+    }
+    else{
+      document.getElementById("countto").type="password";
+    }
+    if(cnum>=1 && calph >= 6 && cuppalph>=1){
+      document.getElementById("lastt").style.display="block"
+    }
+    else{
+      document.getElementById("lastt").style.display="none"
+    }
+    
+  if(into > 12){
+    alert("password mustn't exeed 12 character");
+    document.getElementById("countto").value = "";
+    into = 0;
+    document.getElementById("countoo").style.color="red";
+    document.getElementById("countth").style.color="red";
+    document.getElementById("countal").style.color="red";}
+  }
+</script>
